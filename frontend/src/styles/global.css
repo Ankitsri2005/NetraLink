@@ -927,6 +927,83 @@ button, input, select { font-family: inherit; }
 }
 .rise-in { animation: riseIn 0.55s cubic-bezier(0.22, 1, 0.36, 1) both; }
 
+/* ─────────────────── responsive ─────────────────── */
+
+.topbar-left { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.topbar-left .page-title { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.mobile-menu-btn {
+  display: none;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 17px;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: background 0.16s, color 0.16s;
+}
+.mobile-menu-btn:active { background: var(--surface3); }
+
+.mobile-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 15, 15, 0.42);
+  backdrop-filter: blur(2px);
+  z-index: 60;
+}
+
+.mobile-nav {
+  display: none;
+  position: fixed;
+  top: 0; right: 0; bottom: 0;
+  width: min(288px, 84vw);
+  background: var(--surface);
+  border-left: 1px solid var(--line);
+  box-shadow: -14px 0 44px rgba(0, 0, 0, 0.16);
+  padding: 20px 14px 18px;
+  z-index: 70;
+  flex-direction: column;
+  gap: 4px;
+  visibility: hidden;
+  transform: translateX(100%);
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.28s;
+}
+.mobile-nav.open {
+  visibility: visible;
+  transform: translateX(0);
+}
+.mobile-nav-brand { display: flex; align-items: center; padding: 4px 8px 18px; }
+.mobile-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 12px;
+  border-radius: 12px;
+  color: var(--muted);
+  font-weight: 600;
+  font-size: 15px;
+  transition: background 0.16s, color 0.16s;
+}
+.mobile-nav-item:hover { background: var(--surface3); color: var(--text); }
+.mobile-nav-item.active { background: var(--accent-soft); color: var(--accent); }
+.mobile-nav-foot {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11.5px;
+  color: var(--muted);
+  padding: 12px;
+  border-top: 1px solid var(--line);
+}
+
 @media (max-width: 980px) {
   .sidebar { display: none; }
   .grid-two, .graph-page { grid-template-columns: 1fr; }
@@ -934,4 +1011,61 @@ button, input, select { font-family: inherit; }
   .content { padding: 18px; }
   .topbar { padding: 14px 18px; }
   .case-stats { grid-template-columns: 1fr 1fr; }
+
+  .mobile-menu-btn { display: inline-flex; }
+  .mobile-backdrop { display: block; }
+  .mobile-nav { display: flex; }
+}
+
+@media (max-width: 640px) {
+  .content { padding: 14px; }
+  .topbar { padding: 12px 14px; }
+  .page-title { font-size: 17px; }
+
+  .hero { padding: 26px 20px; border-radius: 16px; }
+  .hero-title { font-size: 24px; }
+  .hero-sub { font-size: 14px; }
+  .hero-cta a { padding: 12px 20px; flex: 1 1 auto; text-align: center; margin-bottom: 4px; }
+  .hero-radar { width: 220px; height: 220px; right: -70px; top: -90px; }
+
+  .cards { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .stat-card { padding: 14px; gap: 10px; }
+  .stat-icon { width: 38px; height: 38px; font-size: 16px; }
+  .stat-num { font-size: 21px; }
+  .stat-label { font-size: 11px; }
+
+  .panel { padding: 16px; }
+  .grid-two { gap: 12px; }
+
+  .toolbar { gap: 8px; }
+  .search { min-width: 100%; }
+  .select { flex: 1 1 auto; }
+
+  .case-stats { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .case-stat { padding: 12px 14px; }
+  .case-stat b { font-size: 22px; }
+
+  .detail-name { font-size: 22px; }
+  .detail-actions { width: 100%; }
+  .btn { padding: 12px 20px; }
+  .btn.small { padding: 10px 16px; }
+
+  .stat-grid { gap: 12px; }
+  .mini-stat b { font-size: 15px; }
+  .gauge { width: 144px; height: 144px; }
+  .gauge-inner { width: 114px; height: 114px; }
+  .gauge-num { font-size: 22px; }
+
+  .graph-page { gap: 12px; }
+  .graph-toolbar { top: 10px; right: 10px; padding: 3px 6px; }
+  .graph-btn { width: 32px; height: 32px; }
+  .graph-search-input { padding: 11px 32px 11px 12px; }
+
+  .evidence-intake-row { flex-direction: column; align-items: stretch; }
+  .file-input { min-width: 0; }
+  .case-create-actions { flex-wrap: wrap; }
+
+  .table-panel { border-radius: 12px; }
+  .table th, .table td { padding: 11px 12px; }
+  .cell-reason { max-width: 220px; }
 }

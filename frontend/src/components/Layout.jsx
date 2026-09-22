@@ -11,6 +11,7 @@ const NAV = [
 export default function Layout() {
   const location = useLocation()
   const [page, setPage] = useState('NetraLink')
+  const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
     const map = {
@@ -24,6 +25,10 @@ export default function Layout() {
     else if (location.pathname.startsWith('/alerts/')) setPage('Alert Detail')
     else if (location.pathname.startsWith('/persons/')) setPage('Entity Detail')
     else if (location.pathname.startsWith('/cases/')) setPage('Case Workbench')
+  }, [location.pathname])
+
+  useEffect(() => {
+    setMenuOpen(false)
   }, [location.pathname])
 
   return (
@@ -52,7 +57,7 @@ export default function Layout() {
               <span className="nav-icon">{item.icon}</span>
               {item.label}
             </NavLink>
-          ))}          
+          ))}
         </nav>
 
         <div className="sidebar-foot">
@@ -63,11 +68,49 @@ export default function Layout() {
 
       <div className="main">
         <header className="topbar">
-          <h1 className="page-title">{page}</h1>
+          <div className="topbar-left">
+            <button
+              type="button"
+              className="mobile-menu-btn"
+              aria-label="Toggle navigation"
+              onClick={() => setMenuOpen((v) => !v)}
+            >
+              {menuOpen ? '✕' : '☰'}
+            </button>
+            <h1 className="page-title">{page}</h1>
+          </div>
           <div className="topbar-right">
             <div className="avatar">INV</div>
           </div>
         </header>
+
+        {menuOpen && <div className="mobile-backdrop" onClick={() => setMenuOpen(false)} />}
+        <nav className={`mobile-nav ${menuOpen ? 'open' : ''}`}>
+          <div className="mobile-nav-brand">
+            <div className="brand-text">
+              <strong>Netra<span>Link</span></strong>
+              <em>graph intelligence</em>
+            </div>
+          </div>
+          {NAV.map((item) => (
+            <NavLink
+              key={item.to}
+              to={item.to}
+              end={item.to === '/'}
+              className={({ isActive }) =>
+                'mobile-nav-item' + (isActive ? ' active' : '')
+              }
+            >
+              <span className="nav-icon">{item.icon}</span>
+              {item.label}
+            </NavLink>
+          ))}
+          <div className="mobile-nav-foot">
+            <div className="live-dot" />
+            <span>Live</span>
+          </div>
+        </nav>
+
         <main className="content">
           <Outlet />
         </main>
