@@ -1,0 +1,54 @@
+services:
+  # ─────────────────────────────────────────────────────────────
+  # NetraLink Backend (FastAPI Web Service)
+  # ─────────────────────────────────────────────────────────────
+  - type: web
+    name: netralink-backend
+    runtime: python
+    plan: free
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: uvicorn backend.app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/v1/graph/neo4j/health
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: netralink-db
+          property: connectionString
+      - key: NEO4J_URI
+        value: neo4j+ssc://1713d76f.databases.neo4j.io
+      - key: NEO4J_USER
+        value: 1713d76f
+      - key: NEO4J_PASSWORD
+        sync: false
+      - key: NEO4J_DATABASE
+        value: 1713d76f
+      - key: CORS_ORIGINS
+        value: "*"
+
+  # ─────────────────────────────────────────────────────────────
+  # NetraLink Frontend (React Vite Static Site)
+  # ─────────────────────────────────────────────────────────────
+  - type: web
+    name: netralink-frontend
+    runtime: static
+    buildCommand: cd frontend && npm install && npm run build
+    staticPublishPath: frontend/dist
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    envVars:
+      - key: VITE_API_URL
+        fromService:
+          type: web
+          name: netralink-backend
+          property: host
+
+databases:
+  # ─────────────────────────────────────────────────────────────
+  # PostgreSQL Database (Render Managed)
+  # ─────────────────────────────────────────────────────────────
+  - name: netralink-db
+    databaseName: netralink
+    user: netralink
+    plan: free

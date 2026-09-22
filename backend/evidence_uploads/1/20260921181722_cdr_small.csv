@@ -1,0 +1,3 @@
+call_id,caller_phone,receiver_phone,date_time,duration,tower_location
+C901,PH001,PH042,2026-08-21 09:00,120,Connaught Place
+C902,PH042,PH088,2026-08-21 09:30,60,Saket

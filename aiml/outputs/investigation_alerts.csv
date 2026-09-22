@@ -1,0 +1,5 @@
+person_id,name,total_calls,unique_contacts,money_sent,money_received,total_transactions,money_difference,anomaly,anomaly_score,priority,degree_centrality,betweenness_centrality,alert_reason
+P001,Rahul Kumar,12.0,8.0,12000.0,37500.0,4.0,25500.0,-1,-0.0536101137492531,High,0.1794871794871795,0.1460582714631297,"High call activity, Many unique contacts, High money received, High transaction activity, Highly connected in network, Acts as a network bridge"
+P002,Amit Sharma,10.0,2.0,40000.0,62000.0,7.0,22000.0,1,-0.0345784316034289,High,0.1282051282051282,0.0300317091815067,"High call activity, High money received, High transaction activity, Highly connected in network"
+P010,Vikash Malhotra,5.0,2.0,114000.0,25000.0,7.0,-89000.0,-1,-0.0653699683478153,High,0.1025641025641025,0.021345029239766,"High money received, High transaction activity"
+P016,Kavita Gupta,7.0,1.0,124500.0,60500.0,8.0,-64000.0,-1,-0.0965167548909995,High,0.1538461538461538,0.044802011603631,"High call activity, High money received, High transaction activity, Highly connected in network"

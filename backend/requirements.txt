@@ -1,0 +1,11 @@
+fastapi>=0.115
+uvicorn[standard]>=0.30
+pydantic>=2.7
+pandas>=2.2
+numpy>=1.26
+networkx>=3.3
+sqlalchemy>=2.0
+psycopg2-binary>=2.9
+python-dotenv>=1.0
+alembic>=1.13
+neo4j>=5.14

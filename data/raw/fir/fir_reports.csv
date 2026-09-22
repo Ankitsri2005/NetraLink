@@ -1,0 +1,9 @@
+report_id,date,report_type,text
+FIR001,2026-08-01,FIR,Rahul Kumar was seen near Sector 18 using mobile number 9876500001. He was observed meeting Amit Sharma.
+FIR002,2026-08-03,FIR,Amit Sharma is associated with account ACC10002. Several incoming transactions were observed in the account.
+FIR003,2026-08-04,Surveillance,Neha Verma was observed near Sector 62 using mobile number 9876500003 and vehicle UP14CD1003.
+FIR004,2026-08-05,Surveillance,An unidentified mobile number 9876500049 repeatedly contacted numbers associated with Amit Sharma and Rahul Kumar.
+FIR005,2026-08-06,FIR,Multiple small transfers were received by ACC10002 from several different accounts over a short period.
+FIR006,2026-08-07,Surveillance,Arjun Singh was seen at Anand Vihar while communicating with Priya Mehta by phone.
+FIR007,2026-08-09,FIR,A suspicious vehicle DL01CD1002 was associated with Amit Sharma during a meeting in Delhi.
+FIR008,2026-08-11,Surveillance,A group of individuals connected through phone communication were observed around Sector 18 and Sector 62.

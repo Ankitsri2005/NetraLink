@@ -1,0 +1,35 @@
+file,column,description,example
+persons.csv,person_id,Unique fictional person identifier,P001
+persons.csv,name,Fictional person's name,Rahul Kumar
+persons.csv,age,Fictional age,28
+persons.csv,city,Primary city in the synthetic scenario,Noida
+phones.csv,phone_id,Unique phone identifier,PH001
+phones.csv,phone_number,Synthetic phone number,9876500001
+phones.csv,person_id,Person associated with the phone; blank means unresolved,P001
+accounts.csv,account_id,Unique account identifier,A001
+accounts.csv,account_number,Synthetic bank account number,ACC10001
+accounts.csv,owner_person_id,Person associated with the account,P001
+accounts.csv,bank,Synthetic bank name,BankA
+cdr.csv,call_id,Unique call record identifier,C001
+cdr.csv,caller_phone,Phone initiating the call,9876500001
+cdr.csv,receiver_phone,Phone receiving the call,9876500002
+cdr.csv,date_time,Synthetic call date and time,2026-08-01 10:15
+cdr.csv,duration,Call duration in seconds,240
+cdr.csv,tower_location,Synthetic tower/location name,Sector 18
+transactions.csv,transaction_id,Unique transaction identifier,T001
+transactions.csv,sender_account,Synthetic sender account number,ACC10001
+transactions.csv,receiver_account,Synthetic receiver account number,ACC10002
+transactions.csv,amount,Synthetic transaction amount in INR,12000
+transactions.csv,timestamp,Synthetic transaction date and time,2026-08-03 12:30
+transactions.csv,location,Synthetic transaction location,Noida
+vehicles.csv,vehicle_id,Unique vehicle identifier,V001
+vehicles.csv,registration_number,Synthetic vehicle registration,UP16AB1001
+vehicles.csv,vehicle_type,Car or Bike,Car
+vehicles.csv,person_id,Associated fictional person,P001
+locations.csv,location_id,Unique location identifier,L001
+locations.csv,location_name,Synthetic location,Sector 18
+locations.csv,city,City containing the location,Noida
+fir_reports.csv,report_id,Unique report identifier,FIR001
+fir_reports.csv,date,Synthetic report date,2026-08-01
+fir_reports.csv,report_type,FIR or Surveillance,FIR
+fir_reports.csv,text,Synthetic report narrative,Rahul Kumar was seen...
