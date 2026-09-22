@@ -9,3 +9,4 @@ psycopg2-binary>=2.9
 python-dotenv>=1.0
 alembic>=1.13
 neo4j>=5.14
+python-multipart>=0.0.9
