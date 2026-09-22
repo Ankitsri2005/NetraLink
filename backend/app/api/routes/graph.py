@@ -68,6 +68,32 @@ def neo4j_health():
     return {"available": is_available()}
 
 
+@router.get("/neo4j/debug")
+def neo4j_debug():
+    """Temporary debug endpoint — shows connection error from Render."""
+    import os
+    from ...neo4j.client import NEO4J_URI, NEO4J_USER, NEO4J_DATABASE
+    from neo4j import GraphDatabase
+    uri = os.getenv("NEO4J_URI", NEO4J_URI)
+    user = os.getenv("NEO4J_USER") or os.getenv("NEO4J_USERNAME", NEO4J_USER)
+    password = os.getenv("NEO4J_PASSWORD", "")
+    db = os.getenv("NEO4J_DATABASE", NEO4J_DATABASE)
+    try:
+        driver = GraphDatabase.driver(uri, auth=(user, password))
+        driver.verify_connectivity()
+        driver.close()
+        return {"status": "connected", "uri": uri, "user": user, "database": db}
+    except Exception as exc:
+        return {
+            "status": "failed",
+            "uri": uri,
+            "user": user,
+            "database": db,
+            "error": str(exc)[:500],
+        }
+
+
+
 @router.post("/neo4j/import", response_model=ImportSummary)
 def import_neo4j_graph():
     _guard()
